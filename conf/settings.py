@@ -40,7 +40,11 @@ SECRET_KEY = 'd^ak-#$43ng(9pq1l46sj&b(=n2-w*_&76om8$il^0ni*kwq&e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'bloomshare.herokuapp.com',
+    '127.0.0.1',
+    'localhost'
+]
 
 
 # Application definition
@@ -63,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'conf.urls'
