@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth import get_user_model, login, authenticate
 
-from .models import Bloom
+from .models import Rental
 
 
 User = get_user_model()
@@ -18,7 +18,7 @@ class HomeView(TemplateView):
         ctx = super().get_context_data(**kwargs)
 
         if self.request.user.is_authenticated:
-            ctx['equipment'] = Bloom.objects.filter(user=self.request.user)
+            ctx['equipment'] = Rental.objects.filter(user=self.request.user)
 
         return ctx
 
@@ -32,9 +32,9 @@ class CreateView(TemplateView):
         item = self.request.POST.get('item')
         price = self.request.POST.get('price')
 
-        equipment = Bloom(item=item, price=price)
-        equipment.user = self.request.user
-        equipment.save()
+        rental = Rental(item=item, price=price)
+        rental.user = self.request.user
+        rental.save()
 
         return HttpResponseRedirect(reverse('bloom:index'))
 
@@ -42,11 +42,11 @@ class CreateView(TemplateView):
 
 class UsersInSystemView(ListView):
     template_name = 'bloom/users.html'
-    model = Users
+    # model = Users
 
-class UserToolList(ListView):
-    template_name = 'bloom/user_tool.html'
-    model = Tool
+class UserEquipmentList(ListView):
+    template_name = 'bloom/user_equipment.html'
+    # model = Equipment
 
     def get_queryset(self):
         query_set = super().get_queryset()
@@ -55,3 +55,5 @@ class UserToolList(ListView):
         query_set = query_set.filter(user_id=user_id)
 
         return query_set
+
+
