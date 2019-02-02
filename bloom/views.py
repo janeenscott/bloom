@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth import get_user_model, login, authenticate
 
 from .models import Bloom
@@ -37,3 +37,21 @@ class CreateView(TemplateView):
         equipment.save()
 
         return HttpResponseRedirect(reverse('bloom:index'))
+
+
+
+class UsersInSystemView(ListView):
+    template_name = 'bloom/users.html'
+    model = Users
+
+class UserToolList(ListView):
+    template_name = 'bloom/user_tool.html'
+    model = Tool
+
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        user_id = self.kwargs.get('pk')
+
+        query_set = query_set.filter(user_id=user_id)
+
+        return query_set
