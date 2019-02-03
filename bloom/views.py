@@ -24,6 +24,7 @@ class HomeView(TemplateView):
 
 
 # # Create your views here.
+
 class CreateView(TemplateView):
 
     template_name = 'bloom/create.html'
@@ -37,6 +38,9 @@ class CreateView(TemplateView):
         rental.save()
 
         return HttpResponseRedirect(reverse('bloom:index'))
+
+        # bloom:index is referring to the url route "index" in the bloom app
+
 
 
 

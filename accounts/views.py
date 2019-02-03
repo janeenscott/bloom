@@ -4,8 +4,10 @@ from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model, login, authenticate
 
+
+
 class SignupView(TemplateView):
-    template_name = 'templates/signup.html'
+    template_name = 'accounts/signup.html'
 
     def post(self, request, *args, **kwargs):
 

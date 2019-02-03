@@ -1,2 +1,27 @@
 {% extends 'bloom/base.html' %}
 
+
+{% block content %}
+
+    <div class="row">
+        <div class="col">
+
+            {% if not user.is_authenticated %}
+                <div class="alert alert-danger" role="alert">
+                    Hey! If you want to track rentals <a href="{% url 'login' %}">please login</a>!
+                </div>
+
+            {% else %}
+                <p class="float-right"><a href="{% url 'bloom:create' %}">Add</a></p>
+
+                <ul class="list-group">
+                {% for piece in equipment %}
+                    <li>{{ piece.item }} -- {{ piece.price }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock content %}
