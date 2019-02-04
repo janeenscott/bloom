@@ -1,41 +1,32 @@
 {% extends 'bloom/base.html' %}
 
 {% block content %}
+<div class="user-input">
+    <h2>What do you have to rent?</h2>
 
-    <h2>Login!</h2>
+    <form method="post" action="{% url 'bloom:create' %}">
+        {% csrf_token %}
+        <table>
+        <tr>
+            <td>Item</td>
+            <td><input type="text" name="item"/></td>
+        </tr>
+        <tr>
+            <td>Price $</td>
+            <td><input type="text" name="price"></td>
+        </tr>
+             <tr>
+            <td>Image</td>
+            <td><input type="url" name="image"></td>
+        </tr>
+        </table>
 
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
-        {% else %}
-        <p>Please login to see this page.</p>
-        {% endif %}
-    {% endif %}
-
-    <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-    <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-    </tr>
-    </table>
-
-    <input type="submit" value="login">
-    <input type="hidden" name="next" value="/">
+        <input class="button" type="submit" value="Add Item">
     </form>
+</div>
 
-    {# Assumes you setup the password_reset view in your URLconf #}
-    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-    <p><a href="{% url 'accounts:signup' %}">Or Create an Account</a></p>
+    <h2><a href={% url 'bloom:index'%}>View all of your items</a></h2>
+{#    <h2><a href={% url 'bloom:user-equipment<pk>'%}>View items to rent</a></h2>#}
+
 
 {% endblock content %}

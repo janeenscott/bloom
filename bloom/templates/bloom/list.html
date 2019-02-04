@@ -8,15 +8,15 @@
 
             {% if not user.is_authenticated %}
                 <div class="alert alert-danger" role="alert">
-                    Hey! If you want to track rentals <a href="{% url 'login' %}">please login</a>!
+                    <p>Hey! If you want to track rentals <a href="{% url 'accounts:login' %}">please login</a>!</p>
                 </div>
 
             {% else %}
-                <p class="float-right"><a href="{% url 'bloom:create' %}">Add</a></p>
+                <p class="float-left"><a href="{% url 'bloom:create' %}">Add</a></p>
 
                 <ul class="list-group">
                 {% for piece in equipment %}
-                    <li>{{ piece.item }} -- {{ piece.price }}</li>
+                    <li><a href="{%  url 'bloom:user-equipment' piece.id %}"> {{ piece.item }} -- {{ piece.price }} </a></li>
                 {% endfor %}
                 </ul>
             {% endif %}

@@ -1,0 +1,65 @@
+body{
+    background-image: url("../images/floral1.1.jpg");
+    background-size: cover;
+}
+
+img {
+    max-width: 100%;
+}
+
+a{
+    color: #BE98C5;
+    font-size: 30px;
+}
+.hero{
+  position: relative;  /* for abs children */
+  margin: 100px;
+  padding: 0;
+  background-size: cover;
+    clear: both;
+}
+
+h1{
+    font-family: Lobster, cursive;
+    font-size: 200px;
+}
+
+
+td{
+    color: #E7ECEF;
+    padding: 5px;
+}
+
+input{
+    margin: 5px auto auto auto;
+}
+
+.button{
+    margin-top: 20px;
+}
+
+h2{
+    color: #E7ECEF;
+}
+
+.user-input{
+    margin: 50px;
+}
+
+.list-group{
+    color: #E8ECEF;
+    margin: 40px;
+    clear: both;
+}
+
+.float-left{
+    margin-left: 20px;
+}
+
+li{
+    font-size: 40px;
+}
+
+p{
+    font-size: 40px;
+}
