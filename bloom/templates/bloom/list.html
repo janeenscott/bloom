@@ -12,11 +12,17 @@
                 </div>
 
             {% else %}
+                <h1>Hi {{ Rental.user }}!</h1> <!--tried Rental.user and piece.user. why won't it populate?-->
                 <p class="float-left"><a href="{% url 'bloom:create' %}">Add</a></p>
 
                 <ul class="list-group">
                 {% for piece in equipment %}
-                    <li><a href="{%  url 'bloom:user-equipment' piece.id %}"> {{ piece.item }} -- {{ piece.price }} </a></li>
+                    <li><a href="{%  url 'bloom:user-equipment' piece.id %}"> {{ piece.item }} -- {{ piece.price }}</a>
+                        <div class="image-container">
+                        <img src="#" title="user-image" alt="user-uploaded-image"/>
+                            <!--tried inserting piece.image and nothing showed up-->
+                        </div>
+                    </li>
                 {% endfor %}
                 </ul>
             {% endif %}

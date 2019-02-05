@@ -40,3 +40,8 @@ h1{
   right: 0;
     color: #E8ECEF;
 }
+
+.image-container{
+    max-height: 300px;
+    width: auto;
+}
