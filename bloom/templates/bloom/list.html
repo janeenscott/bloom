@@ -12,7 +12,8 @@
                 </div>
 
             {% else %}
-                <h1>Hi {{ Rental.user }}!</h1> <!--tried Rental.user and piece.user. why won't it populate?-->
+{#                {% load 'equipment' %}#}
+                <!--<h1>Hi {{ piece.user }}!</h1> --><!--tried Rental.user and piece.user. why won't it populate?-->
                 <p class="float-left"><a href="{% url 'bloom:create' %}">Add</a></p>
 
                 <ul class="list-group">
