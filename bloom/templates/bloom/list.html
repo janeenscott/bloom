@@ -19,10 +19,10 @@
                 <ul class="list-group">
                 {% for piece in equipment %}
                     <li><a href="{%  url 'bloom:user-equipment' piece.id %}"> {{ piece.item }} -- {{ piece.price }}</a>
-                        <div class="image-container">
-                        <img src="#" title="user-image" alt="user-uploaded-image"/>
-                            <!--tried inserting piece.image and nothing showed up-->
-                        </div>
+{#                        <div class="image-container">#}
+{#                        <img src="#" title="user-image" alt="user-uploaded-image"/>#}
+{#                            <!--tried inserting piece.image and nothing showed up-->#}
+{#                        </div>#}
                     </li>
                 {% endfor %}
                 </ul>
