@@ -10,5 +10,4 @@ class Rental(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     item = models.CharField(max_length=255)
     price = models.IntegerField(default=1923)
-#
-# class Users(models.Model):
+    image = models.URLField()

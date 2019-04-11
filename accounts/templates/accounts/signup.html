@@ -1,4 +1,6 @@
+
 {% extends 'bloom/base.html' %}
+
 
 
 {% block content %}
@@ -8,6 +10,10 @@
     <form method="post" action="{% url 'accounts:signup' %}">
         {% csrf_token %}
         <table>
+        <tr>
+            <td>First Name</td>
+            <td><input name="first_name"/></td>
+        </tr>
         <tr>
             <td>Username</td>
             <td><input name="username"/></td>
@@ -26,6 +32,6 @@
         <input type="submit" value="Signup">
     </form>
 
-    <p><a href="{% url 'login' %}">Already Have an Account? Login.</a></p>
+    <p><a href="{% url 'accounts:login' %}">Already Have an Account? Login.</a></p>
 
 {% endblock content %}

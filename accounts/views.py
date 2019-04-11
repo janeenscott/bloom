@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model, login, authenticate
+from django.contrib.auth.models import User
+
 
 
 class SignupView(TemplateView):
@@ -37,4 +39,16 @@ class SignupView(TemplateView):
         # Login the user (does the session table/cookie stuff)
         login(self.request, user)
 
-        return HttpResponseRedirect(reverse('accounts:index'))
+        return HttpResponseRedirect(reverse('bloom:create'))
+
+class LoginView(TemplateView):
+    template_name = 'accounts/login.html'
+
+    def login_user(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+        else:
+            return HttpResponseRedirect(reverse('accounts:index'))
